@@ -1,0 +1,21 @@
+
+
+@import "variables";
+
+// Import styles with default layout.
+// If you are going to use dark layout please comment next line
+@import "node_modules/@coreui/coreui-pro/scss/coreui";
+
+// Import styles with dark layout
+// If you want to use dark layout uncomment next line
+// @import "node_modules/@coreui/coreui-pro/scss/themes/dark/coreui-dark";
+
+// Temp fix, missing form-validation-state icons
+@include form-validation-state("valid", $form-feedback-valid-color, $form-feedback-icon-valid);
+@include form-validation-state("invalid", $form-feedback-invalid-color, $form-feedback-icon-invalid);
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+@import 'node_modules/@coreui/icons/scss/coreui-icons'; 

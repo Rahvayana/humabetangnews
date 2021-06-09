@@ -1,0 +1,679 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Humabetang Swagger",
+        "description": "This is a Humabetang swagger server.  You can find\nout more about Swagger at\n[http://swagger.io](http://swagger.io) or on\n[irc.freenode.net, #swagger](http://swagger.io/irc/).",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "V1"
+    },
+    "paths": {
+        "/api/v1/ads": {
+            "get": {
+                "tags": [
+                    "Advertisments"
+                ],
+                "summary": "Ads",
+                "description": "",
+                "operationId": "getAds",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Logs user into the system",
+                "description": "",
+                "operationId": "firebase token",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "firebase token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "X-Expires-After": {
+                                "description": "date in UTC when token expires",
+                                "schema": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/firebase/token": {
+            "post": {
+                "tags": [
+                    "Firebase"
+                ],
+                "summary": "update fcm token",
+                "description": "",
+                "operationId": "fcm token",
+                "parameters": [
+                    {
+                        "name": "users_id",
+                        "in": "query",
+                        "description": "user id // 0 for guest",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fcm_token",
+                        "in": "query",
+                        "description": "fcm token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "device_id",
+                        "in": "query",
+                        "description": "id device user phone",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "X-Expires-After": {
+                                "description": "date in UTC when token expires",
+                                "schema": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/news": {
+            "get": {
+                "tags": [
+                    "Public News"
+                ],
+                "summary": "List news ",
+                "description": "",
+                "operationId": "listNews",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/news-paginate": {
+            "get": {
+                "tags": [
+                    "Public News"
+                ],
+                "summary": "List news ",
+                "description": "",
+                "operationId": "listNewsPaginate",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/detail-news/{id_news}": {
+            "get": {
+                "tags": [
+                    "Public News"
+                ],
+                "summary": "detail news",
+                "description": "",
+                "operationId": "detailNews",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "detail news",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/news/category/{id_category}": {
+            "get": {
+                "tags": [
+                    "Public News"
+                ],
+                "summary": "List news by category",
+                "description": "",
+                "operationId": "listNewsByCategory",
+                "parameters": [
+                    {
+                        "name": "id_category",
+                        "in": "query",
+                        "description": "list news by category",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/news/category": {
+            "get": {
+                "tags": [
+                    "Public News"
+                ],
+                "summary": "List news category",
+                "description": "",
+                "operationId": "listNewsCategory",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "List news by user",
+                "description": "",
+                "operationId": "listNewsByUser",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/news-paginate": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "List news by user",
+                "description": "",
+                "operationId": "listNewsByUserPaginate",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/news/set/likes": {
+            "post": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "set likes/dislike on news",
+                "description": "",
+                "operationId": "likeNews",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "news id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "0 = Dislike, 1 = like",
+                        "required": true,
+                        "style": "form",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "int",
+                                "default": "0",
+                                "enum": [
+                                    0,
+                                    1
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/news/set/views": {
+            "post": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "set status views on news",
+                "description": "",
+                "operationId": "setViews",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "news id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/guest/set/views": {
+            "post": {
+                "tags": [
+                    "Guest"
+                ],
+                "summary": "set status views on news for guest",
+                "description": "",
+                "operationId": "setViewsGuest",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "news id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/news/set/bookmark": {
+            "post": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "set bookmark/unbookmark",
+                "description": "",
+                "operationId": "bookmarkNews",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "news id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "0 = Unbookmark, 1 = Bookmark",
+                        "required": true,
+                        "style": "form",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "int",
+                                "default": "0",
+                                "enum": [
+                                    0,
+                                    1
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/slideshow": {
+            "get": {
+                "tags": [
+                    "Slideshow"
+                ],
+                "summary": "List slidshow ",
+                "description": "",
+                "operationId": "listSlideshow",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/comment/add": {
+            "post": {
+                "tags": [
+                    "Coment"
+                ],
+                "summary": "addComent",
+                "description": "",
+                "operationId": "addComent",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "news id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "text_comment",
+                        "in": "query",
+                        "description": "text coment",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/comment/delete": {
+            "post": {
+                "tags": [
+                    "Coment"
+                ],
+                "summary": "delete coment",
+                "description": "",
+                "operationId": "deleteComent",
+                "parameters": [
+                    {
+                        "name": "id_coment",
+                        "in": "query",
+                        "description": "news id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/comment/news/{id_news}": {
+            "get": {
+                "tags": [
+                    "Public News"
+                ],
+                "summary": "get comment by id news",
+                "description": "",
+                "operationId": "lits coment by id news",
+                "parameters": [
+                    {
+                        "name": "id_news",
+                        "in": "query",
+                        "description": "list coment by id_news",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/tv": {
+            "get": {
+                "tags": [
+                    "Tv"
+                ],
+                "summary": "List tv ",
+                "description": "",
+                "operationId": "listTv",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/detail-tv/{id_tv}": {
+            "get": {
+                "tags": [
+                    "Tv"
+                ],
+                "summary": "detal tv ",
+                "description": "",
+                "operationId": "detailTv",
+                "parameters": [
+                    {
+                        "name": "id_tv",
+                        "in": "query",
+                        "description": "detail tv",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/historychat/{id_tv}": {
+            "get": {
+                "tags": [
+                    "Tv"
+                ],
+                "summary": "history chat tv ",
+                "description": "",
+                "operationId": "historyChat",
+                "parameters": [
+                    {
+                        "name": "id_tv",
+                        "in": "query",
+                        "description": "history chat tv",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/v1/sendchat": {
+            "post": {
+                "tags": [
+                    "Tv"
+                ],
+                "summary": "send chat",
+                "description": "",
+                "operationId": "send chat",
+                "parameters": [
+                    {
+                        "name": "channel_id",
+                        "in": "query",
+                        "description": "id channel chatt",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "message",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "X-Expires-After": {
+                                "description": "date in UTC when token expires",
+                                "schema": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "fail send chat"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Authorization": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

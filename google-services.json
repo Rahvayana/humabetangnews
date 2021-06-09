@@ -1,0 +1,48 @@
+{
+    "project_info": {
+      "project_number": "492014248870",
+      "firebase_url": "https://huma-betang.firebaseio.com",
+      "project_id": "huma-betang",
+      "storage_bucket": "huma-betang.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:492014248870:android:a2633e637075a49614e567",
+          "android_client_info": {
+            "package_name": "com.humabentang"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "492014248870-nmptvpdhc5k48depof1ban72h1rm063g.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.humabentang",
+              "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            }
+          },
+          {
+            "client_id": "492014248870-702r6ggttntn6n98u7foln0jo8guodsf.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyA5sfcpPL9Fm9Q8IgQb4gvsEc7bbcwt7y8"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "492014248870-702r6ggttntn6n98u7foln0jo8guodsf.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
