@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 Route::post('/login-auth', 'Auth\LoginController@loginAuth');
 
 
-Route::get('/berita/{slug}', 'HomeController@detailBerita');
+Route::get('/berita/{slug}', 'HomeController@detailBerita')->name('news.detail');
 
 Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 Route::get('/terms-of-service', 'HomeController@termsOfService');
@@ -33,7 +33,7 @@ Route::get('/terms-of-service', 'HomeController@termsOfService');
 
 Route::post('/berita/addcomment', 'UsersController@addComment');
 Route::get('/top-10', 'HomeController@top10');
-Route::get('/berita/kategori/{slug}', 'HomeController@newsByKategori');
+Route::get('/berita/kategori/{slug}', 'HomeController@newsByKategori')->name('news.category.list');
 Route::get('/tv-online', 'HomeController@tvOnline');
 
 //image resizer
